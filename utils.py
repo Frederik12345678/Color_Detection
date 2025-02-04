@@ -52,3 +52,18 @@ def rgb_to_hsv_saturation(r, g, b):
     s = 0 if v == 0 else (d / v) * 100  # Convert to percentage
 
     return s
+
+
+
+def crop_center(image, crop_size=(80, 80)):
+    h, w = image.shape[:2]
+    crop_h, crop_w = crop_size
+
+    # Calculate the center coordinates
+    start_x = (w - crop_w) // 2
+    start_y = (h - crop_h) // 2
+
+    # Crop the image
+    cropped_image = image[start_y:start_y + crop_h, start_x:start_x + crop_w]
+    
+    return cropped_image
